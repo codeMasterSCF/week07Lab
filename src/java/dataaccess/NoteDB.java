@@ -51,8 +51,8 @@ public class NoteDB {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         
-        String preparedUpdate = "UPDATE Notes SET" 
-                + "contents = ?" 
+        String preparedUpdate = "UPDATE Notes SET " 
+                + "contents = ? " 
                 + "WHERE noteId = ?";
         
         try {
@@ -143,7 +143,6 @@ public class NoteDB {
                 note = new Note(rs.getInt("noteId"), rs.getDate("dateCreated"), rs.getString("contents"));
 
             }
-            pool.freeConnection(connection);
 
             return note;
 
@@ -174,7 +173,7 @@ public class NoteDB {
     
         try {
             
-            String preparedDelete = "DELETE FROM Notes" 
+            String preparedDelete = "DELETE FROM Notes " 
                 + "WHERE noteId = ?";
             PreparedStatement ps = connection.prepareStatement(preparedDelete);
             ps.setInt(1, note.getNoteId());
@@ -202,14 +201,6 @@ public class NoteDB {
 
         return sqlDate;
 
-    }
-
-    public Note getNote(long noteId) {
-        
-        Note note = new Note();
-        note.setNoteId((int) noteId);
-        return note;
-        
     }
     
 }
