@@ -8,25 +8,38 @@ import java.util.Date;
  */
 public class Note {
     
-    int NoteId;
-    java.util.Date dateCreated;
-    String contents;
+    private int noteId;
+    private java.util.Date dateCreated;
+    private String contents;
 
     public Note() {
     }
 
     public Note(int NoteId, Date dateCreated, String contents) {
-        this.NoteId = NoteId;
+        this.noteId = NoteId;
         this.dateCreated = dateCreated;
         this.contents = contents;
     }
 
+    public Note(String contents)
+    {
+        this.dateCreated = new Date();
+        this.contents = contents;
+    }
+    
+    public Note(int noteId, String contents)
+    {
+        this.noteId = noteId;
+        this.dateCreated = new Date();
+        this.contents = contents;
+    }
+
     public int getNoteId() {
-        return NoteId;
+        return noteId;
     }
 
     public void setNoteId(int NoteId) {
-        this.NoteId = NoteId;
+        this.noteId = NoteId;
     }
 
     public Date getDateCreated() {
